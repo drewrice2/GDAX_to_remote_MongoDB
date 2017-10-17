@@ -1,11 +1,14 @@
 # GDAX to remote MongoDB
 The goal of this repository is to demonstrate how to stream data from one EC2
-instance to a remote MongoDB instance on another EC2. Files pertaining to a
-hosted MongoDB instance will be in the `mongo_server` directory. Files
-pertaining to streaming from GDAX will be located in the `gdax_server` directory.
+instance to a remote MongoDB instance on another EC2. This project is not all
+that impressive on its own, but I plan to do much more with the data itself once
+I have collected a decent amount.
 
-EC2 setup set up details will need to be handled beforehand. Don't forget to
-change your inbound security rules for the Mongo instance!
+Files pertaining to a hosted MongoDB instance will be in the `mongo_server`
+directory. Files pertaining to streaming from GDAX will be located in the
+`gdax_server` directory. EC2 setup set up details will need to be handled
+beforehand. Don't forget to change your inbound security rules for the Mongo
+instance!
 
 Users should secure-copy relevant files to the correct EC2 instance with:
 `scp -i my_AWS_PEM.pem mongo_server/ ubuntu@ec2-xx-my-mongo-server-xx.compute-1.amazonaws.com`
