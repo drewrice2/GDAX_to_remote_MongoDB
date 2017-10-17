@@ -1,0 +1,6 @@
+{
+"ADDRESS": "ec2-xx-my-mongo-server-xx.compute-1.amazonaws.com",
+"USER": "my_username",
+"PASSWORD": "my_password",
+"DATABASE_NAME": "my_db"
+}

@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+gdax_server/properties.json
+mongo_gdax.pem
+
 # Distribution / packaging
 .Python
 env/
