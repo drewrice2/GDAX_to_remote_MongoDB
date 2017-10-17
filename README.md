@@ -4,6 +4,9 @@ instance to a remote MongoDB instance on another EC2. Files pertaining to a
 hosted MongoDB instance will be in the `mongo_server` directory. Files
 pertaining to streaming from GDAX will be located in the `gdax_server` directory.
 
+EC2 setup set up details will need to be handled beforehand. Don't forget to
+change your inbound security rules for the Mongo instance!
+
 Users should secure-copy relevant files to the correct EC2 instance with:
 `scp -i my_AWS_PEM.pem mongo_server/ ubuntu@ec2-xx-my-mongo-server-xx.compute-1.amazonaws.com`
 OR
@@ -59,3 +62,12 @@ strategies. GDAX is just one cryptocurrency exchange; many other have robust
 APIs for collecting data. I believe arbitrage opportunities and other strategies
 will make themselves more clear with a significant amount of data. So let's get
 going!
+
+### More notes
+Much of the MongoDB server setup could be contained within the `mongo_setup.sh`
+script, but each user's specifications / security preferences will be different.
+
+Additionally, AWS EC2 security settings will need to be handled prior to
+utilizing this repository. But again, each user will likely have a different
+use case or budget in terms of EC2 preferences and this is why my setup details
+were not included.
