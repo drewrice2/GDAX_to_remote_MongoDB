@@ -47,6 +47,15 @@ WebsocketClient so we can stream events into the remote MongoDB.
 Begin by ssh'ing into your EC2:
 
 1. `ssh -i my_AWS_PEM.pem ubuntu@ec2-xx-my-GDAX-server-xx.compute-1.amazonaws.com`
-2. Adjust `properties.json` with the correct information.
+2. Adjust `properties.json` with the correct information. The properties in this
+file should be those created for the MongoDB instance.
 2. Run `GDAX_setup.sh` to get started. This should take care of most of the
 installation work and start the streaming process!
+
+### Ok. It's working. What now?
+The fun is just beginning. I plan to implement my own backtesting system
+for algorithmic trading. But first, we need lots of data to test various
+strategies. GDAX is just one cryptocurrency exchange; many other have robust
+APIs for collecting data. I believe arbitrage opportunities and other strategies
+will make themselves more clear with a significant amount of data. So let's get
+going!
