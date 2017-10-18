@@ -115,12 +115,12 @@ class WebsocketClient(object):
     def on_error(self, e):
         print(e)
 
+# This is a quick-and-dirty fix for a closed websocket.
 def stream(_wsClient):
-    '''This is a quick-and-dirty fix for a closed websocket.
-    '''
     try:
         _wsClient.start()
     except WebSocketConnectionClosedException as e:
+        _wsClient.close()
         time.sleep(5)
         stream(_wsClient)
 
@@ -137,13 +137,13 @@ if __name__ == '__main__':
     PASSWORD = properties['PASSWORD']
     DATABASE_NAME = properties['DATABASE_NAME']
 
-    # AWS configuration
+    # AWS and Mongo configuration
     m = MongoClient('mongodb://' + USER + ':' + PASSWORD + '@' + ADDRESS + '/'
         + DATABASE_NAME)
     db = m.db
     btc = db.btc # this names the Mongo collection, if it does not already exist
 
     # stream!
-    wsClient = WebsocketClient(url="wss://ws-feed.gdax.com", products=CURRENCY_PAIR,
-        mongo_collection=btc, should_print=False)
+    wsClient = WebsocketClient(url="wss://ws-feed.gdax.com",
+        products=CURRENCY_PAIR, mongo_collection=btc, should_print=False)
     stream(wsClient)
