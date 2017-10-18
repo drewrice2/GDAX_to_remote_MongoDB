@@ -43,7 +43,7 @@ extension.
   `authorization: 'enabled'` under the `security` parameter.
 6. Run `sudo service mongod start` to start the instance.
 
-Note: run `mongo db -u "my_username" -p "my_password"` to take a peek inside
+Note: run `mongo my_db -u "my_username" -p "my_password"` to take a peek inside
 your running MongoDB instance.
 
 ### GDAX streaming client setup
