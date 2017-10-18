@@ -74,3 +74,7 @@ Additionally, AWS EC2 security settings will need to be handled prior to
 utilizing this repository. But again, each user will likely have a different
 use case or budget in terms of EC2 preferences and this is why my setup details
 were not included.
+
+I am using a `r4.xlarge` instance with beefed up storage for the Mongo instance.
+This is probably overkill, but I'm still testing out the memory-optimized
+instance types. The GDAX server is a `t2.micro` instance.
