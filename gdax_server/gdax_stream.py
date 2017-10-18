@@ -134,7 +134,14 @@ class WebsocketClient(object):
     def on_error(self, e):
         print(e)
 
+def stream(wsClient):
+
+    try:
+        wsClient.start()
+    except WebSocketConnectionClosedException as e:
+        time.sleep(5)
+        stream(wsClient)
 # stream!
 wsClient = WebsocketClient(url="wss://ws-feed.gdax.com", products=CURRENCY_PAIR,
     mongo_collection=btc, should_print=False)
-wsClient.start()
+stream(wsClient)

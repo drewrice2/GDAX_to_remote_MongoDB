@@ -1,4 +1,5 @@
-# This bash script should prepare all dependancies for the streaming client.
+# This bash script should prepare all dependancies and launch the streaming
+# client.
 
 # Update apt-get.
 sudo apt-get update

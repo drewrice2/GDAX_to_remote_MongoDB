@@ -6,7 +6,7 @@ I have collected a decent amount.
 
 Files pertaining to a hosted MongoDB instance will be in the `mongo_server`
 directory. Files pertaining to streaming from GDAX will be located in the
-`gdax_server` directory. EC2 setup set up details will need to be handled
+`gdax_server` directory. EC2 setup details will need to be handled
 beforehand. Don't forget to change your inbound security rules for the Mongo
 instance!
 
