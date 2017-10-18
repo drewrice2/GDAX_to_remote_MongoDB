@@ -74,7 +74,6 @@ class WebsocketClient(object):
             sub_params = {"type": "heartbeat", "on": False}
         self.ws.send(json.dumps(sub_params))
 
-
     def _listen(self):
         while not self.stop:
             try:
@@ -84,6 +83,8 @@ class WebsocketClient(object):
                 msg = json.loads(self.ws.recv())
             except Exception as e:
                 self.on_error(e)
+                self.close() # should narrow down Exceptions to catch here
+                self.start()
             else:
                 self.on_message(msg)
 
@@ -115,18 +116,18 @@ class WebsocketClient(object):
     def on_error(self, e):
         print(e)
 
-# This is a quick-and-dirty fix for a closed websocket.
-def stream(_wsClient):
-    try:
-        _wsClient.start()
-    except WebSocketConnectionClosedException as e:
-        _wsClient.close()
-        time.sleep(5)
-        stream(_wsClient)
+# # This is a quick-and-dirty fix for a closed websocket.
+# def stream(_wsClient):
+#     try:
+#         _wsClient.start()
+#     except WebSocketConnectionClosedException as e:
+#         _wsClient.close()
+#         time.sleep(5)
+#         stream(_wsClient)
 
 if __name__ == '__main__':
 
-    # Properties and configuration
+    # Properties
     CURRENCY_PAIR = 'BTC-USD'
 
     # Grab user-specific MongoDB details
@@ -143,7 +144,8 @@ if __name__ == '__main__':
     db = m.db
     btc = db.btc # this names the Mongo collection, if it does not already exist
 
-    # stream!
+    # begin streaming from GDAX
     wsClient = WebsocketClient(url="wss://ws-feed.gdax.com",
         products=CURRENCY_PAIR, mongo_collection=btc, should_print=False)
-    stream(wsClient)
+    wsClient.start()
+    # stream(wsClient)
