@@ -11,9 +11,9 @@ beforehand. Don't forget to change your inbound security rules for the Mongo
 instance!
 
 Users should secure-copy relevant files to the correct EC2 instance with:
-`scp -i my_AWS_PEM.pem mongo_server/ ubuntu@ec2-xx-my-mongo-server-xx.compute-1.amazonaws.com`
+`scp -i my_AWS_PEM.pem mongo_server/ ubuntu@ec2-xx-my-mongo-server-xx.compute-1.amazonaws.com:~`
 OR
-`scp -i my_AWS_PEM.pem gdax_server/ ubuntu@ec2-xx-my-GDAX-server-xx.compute-1.amazonaws.com`.
+`scp -i my_AWS_PEM.pem gdax_server/ ubuntu@ec2-xx-my-GDAX-server-xx.compute-1.amazonaws.com:~`.
 
 
 ### Mongo server setup
