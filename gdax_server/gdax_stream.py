@@ -82,8 +82,8 @@ class WebsocketClient(object):
                     self.ws.ping("keepalive")
                 msg = json.loads(self.ws.recv())
             except Exception as e:
-                self.on_error(e)
-                self.close() # should narrow down Exceptions to catch here
+                self.on_error(e) # this does not fix the broken connection issue
+                self.close()
                 self.start()
             else:
                 self.on_message(msg)
@@ -116,15 +116,6 @@ class WebsocketClient(object):
     def on_error(self, e):
         print(e)
 
-# # This is a quick-and-dirty fix for a closed websocket.
-# def stream(_wsClient):
-#     try:
-#         _wsClient.start()
-#     except WebSocketConnectionClosedException as e:
-#         _wsClient.close()
-#         time.sleep(5)
-#         stream(_wsClient)
-
 if __name__ == '__main__':
 
     # Properties
@@ -148,4 +139,3 @@ if __name__ == '__main__':
     wsClient = WebsocketClient(url="wss://ws-feed.gdax.com",
         products=CURRENCY_PAIR, mongo_collection=btc, should_print=False)
     wsClient.start()
-    # stream(wsClient)
