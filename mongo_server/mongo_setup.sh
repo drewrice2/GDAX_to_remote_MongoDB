@@ -15,13 +15,7 @@ sudo apt-get update
 sudo apt-get install -y mongodb-org
 
 # Start MongoDB with:
-# sudo service mongod start
-#
+# `sudo service mongod start`
+
 # Restart service with:
-# sudo service mongod restart
-#
-# The following can be used to check Mongo existance with PyMongo.
-# sudo apt-get -y install python-pip
-# pip install --upgrade pip
-# sudo pip install pymongo
-# python pymongo_setup.py
+# `sudo service mongod restart`
