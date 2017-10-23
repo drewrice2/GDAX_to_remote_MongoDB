@@ -8,6 +8,7 @@ __pycache__/
 
 gdax_server/properties.json
 mongo_gdax.pem
+.DS_Store
 
 # Distribution / packaging
 .Python
